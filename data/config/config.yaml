@@ -1,0 +1,38 @@
+# Configuration du modèle YOLOv5
+model:
+  type: "yolov5s"  # Options: yolov5n, yolov5s, yolov5m, yolov5l, yolov5x
+  confidence_threshold: 0.45
+  iou_threshold: 0.45
+  device: "cuda:0"  # Utiliser "cpu" si pas de GPU disponible
+  classes: null  # null pour toutes les classes, ou liste d'indices
+
+# Configuration de la source vidéo
+video:
+  source: 0  # 0 pour webcam, ou chemin/URL pour fichier vidéo ou flux RTSP
+  width: 640
+  height: 480
+  fps: 30
+  buffer_size: 10
+
+# Configuration de la détection
+detection:
+  enabled: true
+  save_results: true
+  output_dir: "./results"
+  draw_bounding_boxes: true
+  draw_labels: true
+  draw_confidence: true
+
+# Configuration des alertes
+alerts:
+  enabled: true
+  min_confidence: 0.6
+  trigger_classes: [0, 2, 3]  # Indices des classes qui déclenchent des alertes
+  cooldown_period: 10  # Secondes entre alertes pour éviter les doublons
+
+# Configuration du serveur API
+api:
+  host: "0.0.0.0"
+  port: 8000
+  debug: false
+  allow_cors: true
